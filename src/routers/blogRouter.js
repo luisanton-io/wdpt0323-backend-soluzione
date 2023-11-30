@@ -5,7 +5,10 @@ const blogPostRouter = express.Router()
 
 blogPostRouter
     .get("/", async function (req, res, next) {
-        const results = await BlogPost.find({})
+        const results = await BlogPost.find({}).populate(
+            "author",
+            "-_id firstName lastName"
+        )
         res.json(results)
     })
     .get("/:id", async function (req, res, next) {

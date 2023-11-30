@@ -19,13 +19,9 @@ const BlogPostSchema = new Schema({
         unit: String,
     },
     author: {
-        name: {
-            type: String,
-            required: true,
-        }, //nome dell’autore,
-        avatar: {
-            type: String,
-        }, //immagine dell’autore
+        type: Schema.Types.ObjectId,
+        // type: [Schema.Types.ObjectId], // se multipli
+        ref: "authors",
     },
     content: {
         type: String,
